@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Simple generator for React and Redux",
   "files": [
-    "generators/app"
+    "generators/component",
+    "generators/reducer"
   ],
   "keywords": [
     "yeoman-generator",
