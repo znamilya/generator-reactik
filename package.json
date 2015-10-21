@@ -1,0 +1,16 @@
+{
+  "name": "generator-reactik",
+  "version": "0.1.0",
+  "description": "Simple generator for React and Redux",
+  "files": [
+    "generators/app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "react",
+    "redux"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.20.3"
+  }
+}
