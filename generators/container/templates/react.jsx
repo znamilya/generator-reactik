@@ -1,27 +1,21 @@
-import React, { PropTypes }     from 'react';
-import bemCN                    from 'bem-cn';
+import React                    from 'react';
+import { connect }              from 'react-redux';
+import { bindActionCreators }   from 'redux';
 import pureRender               from 'pure-render-decorator';
 
 <%if (addStyles) { %>import './<%= name %>.styl';<% } %>
 
 
-/**
- * Описание компонента
- */
+@connect(
+    (state, ownProps) => {
+        return {}
+    },
+    (dispatcher) => {
+
+    }
+)
 @pureRender
 class <%= name %> extends React.Component {
-
-    static propTypes = {
-    };
-
-    static defaultProps = {
-    };
-
-    constructor(props) {
-        super(props);
-
-        this.bindHandlers();
-    }
 
     /* ------------------------------------------------------------------------------------------ */
     /* REACT                                                                                      */
@@ -30,12 +24,6 @@ class <%= name %> extends React.Component {
     /* ------------------------------------------------------------------------------------------ */
     /* METHODS                                                                                    */
     /* ------------------------------------------------------------------------------------------ */
-    bindHandlers() {
-        [].forEach(function (handler) {
-            this[handler] = this[handler].bind(this);
-        }, this);
-    }
-
 
     /* ------------------------------------------------------------------------------------------ */
     /* HANDLERS                                                                                   */
@@ -46,7 +34,9 @@ class <%= name %> extends React.Component {
     /* ------------------------------------------------------------------------------------------ */
     render() {
         return (
-            <div className="<%= cssClass %>"></div>
+            <div className="<%= cssClass %>">
+                {this.props.children}
+            </div>
         );
     }
 }

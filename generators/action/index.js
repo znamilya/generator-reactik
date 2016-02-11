@@ -28,14 +28,14 @@ module.exports = generators.Base.extend({
             name    : 'name',
             message : 'Ввидет имя действий (через запятую)'
         }, function (answers) {
-            this._actions = answers.name ? answers.name.replace(/\s+/ig, '').toUpperCase().split(',') : [];
+            this._actions = answers.name ? answers.name.replace(/\s+/ig, '').split(',') : [];
             done();
         }.bind(this));
     },
 
     writing: function () {
         if (fs.existsSync(this._name)) {
-            console.log(chalk.red('Reducer с именем "' + this._name + '" уже существует'));
+            console.log(chalk.red('Action с именем "' + this._name + '" уже существует'));
             return;
         }
 
