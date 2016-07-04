@@ -2,45 +2,16 @@ var generators = require('yeoman-generator');
 var mkdirp     = require('mkdirp');
 var chalk      = require('chalk');
 var fs         = require('fs');
+var utils      = require('../../utils');
 
-
-var SEPARATOR = '-';
-var FILES = {
+var TEMPLATES_PATHS = {
     REACT:  'react.jsx',
-    STYLUS: 'stylus.styl'
+    STYLUS: 'stylus.styl',
 }
 
 
 module.exports = generators.Base.extend({
-    _isUpper: function (letter) {
-        return letter === letter.toUpperCase();
-    },
-
-    _nameToCSSClass: function (str) {
-        var res = '';
-        var letter;
-
-        for (var i = 0; i < str.length; i++) {
-            letter = str[i];
-
-            if (this._isUpper(letter)) {
-                if (i > 0) {
-                    res += SEPARATOR;
-                }
-                res += letter.toLowerCase();
-            } else {
-                res += letter;
-            }
-        }
-
-        return res;
-    },
-
-    _upFirstLatter: function (str) {
-        return str[0].toUpperCase() + str.slice(1);
-    },
-
-    _checkTech: function (name) {
+    _checkIfTechSelected: function (name) {
         return this._techs.indexOf(name) !== -1;
     },
 
@@ -53,7 +24,7 @@ module.exports = generators.Base.extend({
             name    : 'name',
             message : 'Имя компонента'
         }, function (answers) {
-            this._name = this._upFirstLatter(answers.name);
+            this._name = utils.upFirstLetter(answers.name);
             done();
         }.bind(this));
     },
@@ -80,32 +51,32 @@ module.exports = generators.Base.extend({
         }
 
         // Create react file
-        if (this._checkTech('react')) {
+        if (this._checkIfTechSelected('react')) {
             this.fs.copyTpl(
-                this.templatePath(FILES.REACT),
+                this.templatePath(TEMPLATES_PATHS.REACT),
                 this.destinationPath(this._name + '/' + this._name + '.jsx'),
                 {
                     name: this._name,
-                    cssClass: this._nameToCSSClass(this._name),
-                    addStyles: this._checkTech('stylus')
+                    cssClass: utils.convertNameToCSSClass(this._name),
+                    addStyles: this._checkIfTechSelected('stylus')
                 }
             );
         }
 
         // Create stylus file
-        if (this._checkTech('stylus')) {
+        if (this._checkIfTechSelected('stylus')) {
             this.fs.copyTpl(
-                this.templatePath(FILES.STYLUS),
+                this.templatePath(TEMPLATES_PATHS.STYLUS),
                 this.destinationPath(this._name + '/' + this._name + '.styl'),
                 {
                     name: this._name,
-                    cssClass: this._nameToCSSClass(this._name)
+                    cssClass: utils.convertNameToCSSClass(this._name)
                 }
             );
         }
 
         // Create images folder
-        if (this._checkTech('images')) {
+        if (this._checkIfTechSelected('images')) {
            mkdirp.sync(this._name + '/' + 'img/');
         }
      }

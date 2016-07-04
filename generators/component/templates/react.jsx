@@ -1,8 +1,10 @@
 import React, { PropTypes }     from 'react';
 import bemCN                    from 'bem-cn';
 import pureRender               from 'pure-render-decorator';
+<%if (addStyles) { %>
 
-<%if (addStyles) { %>import './<%= name %>.styl';<% } %>
+import './<%= name %>.styl';
+<% } %>
 
 
 /**
@@ -19,8 +21,6 @@ class <%= name %> extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.bindHandlers();
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -30,12 +30,6 @@ class <%= name %> extends React.Component {
     /* ------------------------------------------------------------------------------------------ */
     /* METHODS                                                                                    */
     /* ------------------------------------------------------------------------------------------ */
-    bindHandlers() {
-        [].forEach(function (handler) {
-            this[handler] = this[handler].bind(this);
-        }, this);
-    }
-
 
     /* ------------------------------------------------------------------------------------------ */
     /* HANDLERS                                                                                   */
@@ -45,8 +39,10 @@ class <%= name %> extends React.Component {
     /* RENDER                                                                                     */
     /* ------------------------------------------------------------------------------------------ */
     render() {
+        const b = bemCN("<%= cssClass %>");
+
         return (
-            <div className="<%= cssClass %>"></div>
+            <div className={b()}></div>
         );
     }
 }
