@@ -1,12 +1,12 @@
 {
   "name": "generator-reactik",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple Yeoman generator for React and Redux",
   "author": "Ilya Znamensky",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/znamilya/generator-reactik"
-    },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/znamilya/generator-reactik"
+  },
   "files": [
     "generators/component",
     "generators/reducer"
