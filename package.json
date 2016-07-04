@@ -1,6 +1,6 @@
 {
   "name": "generator-reactik2",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Simple Yeoman generator for React and Redux",
   "author": "Ilya Znamensky",
   "repository": {
