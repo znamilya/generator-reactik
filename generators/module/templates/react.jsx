@@ -1,20 +1,19 @@
 import React                    from 'react';
 import { connect }              from 'react-redux';
 import { bindActionCreators }   from 'redux';
-import pureRender               from 'pure-render-decorator';
-
-<%if (addStyles) { %>import './<%= name %>.styl';<% } %>
-
+import bemCN                    from 'bem-cn';
+<%if (addStyles) { %>
+import './<%= name %>.styl';
+<% } %>
 
 @connect(
-    (state, ownProps) => {
-        return {}
-    },
-    (dispatcher) => {
+    state => ({
+
+    }),
+    {
 
     }
 )
-@pureRender
 class <%= name %> extends React.Component {
 
     /* ------------------------------------------------------------------------------------------ */
@@ -33,10 +32,10 @@ class <%= name %> extends React.Component {
     /* RENDER                                                                                     */
     /* ------------------------------------------------------------------------------------------ */
     render() {
+        const b = bemCN('<%= cssClass %>');
+
         return (
-            <div className="<%= cssClass %>">
-                {this.props.children}
-            </div>
+            <div className={b()}></div>
         );
     }
 }

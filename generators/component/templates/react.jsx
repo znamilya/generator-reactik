@@ -2,10 +2,8 @@ import React, { PropTypes }     from 'react';
 import bemCN                    from 'bem-cn';
 import pureRender               from 'pure-render-decorator';
 <%if (addStyles) { %>
-
 import './<%= name %>.styl';
 <% } %>
-
 
 /**
  * Описание компонента
@@ -39,7 +37,7 @@ class <%= name %> extends React.Component {
     /* RENDER                                                                                     */
     /* ------------------------------------------------------------------------------------------ */
     render() {
-        const b = bemCN("<%= cssClass %>");
+        const b = bemCN('<%= cssClass %>');
 
         return (
             <div className={b()}></div>

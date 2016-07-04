@@ -12,7 +12,7 @@ module.exports = generators.Base.extend({
         this.prompt({
             type    : 'input',
             name    : 'name',
-            message : 'Имя редьюсера'
+            message : 'Имя action'
         }, function (answers) {
             this._name = answers.name;
             done();

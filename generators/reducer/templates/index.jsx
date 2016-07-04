@@ -1,24 +1,24 @@
-import constants    from '../constants/<%= constants %>.jsx';
+import constants    from '../constants/<%= constants %>';
+
+
+const defaultState = [];
+
 
 /**
- * Описание
- * 
- * @param  {} state Предыдущее  состояние
- * @param  {Object} action
- * @param  {String} action.type Тип действия
- *
- * @return {}                   Новое состояние
+ * Описание  reducer
  */
-export default function <%= name %>(state = {}, action) {
-    switch(action.type) {
+export default function <%= name %>(state = defaultState, action) {
+    switch (action.type) {
 <% if (actions.length) { %>
 <% actions.forEach(function (action) { -%>
-        case constants.<%= action %>:
+        case constants.<%= action %>: {
             return state;
+        }
 
 <% }) -%>
 <% } -%>
-        default:
+        default: {
             return state;
+        }
     }
 }
