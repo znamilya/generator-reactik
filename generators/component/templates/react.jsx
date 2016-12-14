@@ -1,15 +1,12 @@
 import React, { PropTypes }     from 'react';
-import bemCN                    from 'bem-cn';
-import pureRender               from 'pure-render-decorator';
+import bemCl                    from 'bem-cl';
 <%if (addStyles) { %>
 import './<%= name %>.styl';
 <% } %>
 
-/**
- * Описание компонента
- */
-@pureRender
-class <%= name %> extends React.Component {
+const b = bemCl('<%= cssClass %>');
+
+class <%= name %> extends React.PureComponent {
 
     static propTypes = {
     };
@@ -37,10 +34,8 @@ class <%= name %> extends React.Component {
     /* RENDER                                                                                     */
     /* ------------------------------------------------------------------------------------------ */
     render() {
-        const b = bemCN('<%= cssClass %>');
-
         return (
-            <div className={b()}></div>
+            <div className={b()}><%= name></div>
         );
     }
 }
